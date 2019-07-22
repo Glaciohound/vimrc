@@ -1,0 +1,30 @@
+[submodule "my_plugins/lh-vim-lib"]
+	path = my_plugins/lh-vim-lib
+	url = http://github.com/LucHermitte/lh-vim-lib
+[submodule "my_plugins/vim-flake8"]
+	path = my_plugins/vim-flake8
+	url = https://github.com/nvie/vim-flake8.git
+[submodule "my_plugins/vim-sync"]
+	path = my_plugins/vim-sync
+	url = https://github.com/eshion/vim-sync.git
+[submodule "my_plugins/local_vimrc"]
+	path = my_plugins/local_vimrc
+	url = http://github.com/LucHermitte/local_vimrc
+[submodule "my_plugins/vim-header"]
+	path = my_plugins/vim-header
+	url = http://github.com/alpertuna/vim-header
+[submodule "my_plugins/syntastic"]
+	path = my_plugins/syntastic
+	url = https://github.com/vim-syntastic/syntastic
+[submodule "my_plugins/vim-python-pep8-indent"]
+	path = my_plugins/vim-python-pep8-indent
+	url = https://github.com/Vimjas/vim-python-pep8-indent
+[submodule "my_plugins/indentLine"]
+	path = my_plugins/indentLine
+	url = https://github.com/Yggdroot/indentLine
+[submodule "my_plugins/vim-auto-save"]
+	path = my_plugins/vim-auto-save
+	url = https://github.com/907th/vim-auto-save
+[submodule "my_plugins/vim-rails"]
+	path = my_plugins/vim-rails
+	url = https://github.com/907th/tpope/vim-rails
