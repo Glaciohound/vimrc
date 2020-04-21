@@ -42,7 +42,7 @@ filetype plugin indent on
 " basic settings for typing and visualization
 
 set confirm
-set gfn=Monaco:h12
+set gfn=Monaco:h14
 set lines=999 columns=999
 set number
 set foldmethod=indent
