@@ -8,3 +8,8 @@ my_plugins/
 my_configs.vim
 tags
 .DS_Store
+<<<<<<< Updated upstream
+=======
+
+my_plugins/
+>>>>>>> Stashed changes
