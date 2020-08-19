@@ -21,6 +21,7 @@ Plugin 'Vimjas/vim-python-pep8-indent'
 Plugin 'tell-k/vim-autopep8'
 Plugin 'mhinz/vim-startify'
 Plugin '907th/vim-auto-save'
+Plugin 'yuttle/comfortable-motion.vim'
 
 " Plugin 'tpope/vim-rails'
 " Plugin 'skywind3000/asyncrun.vim'
