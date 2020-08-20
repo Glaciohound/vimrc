@@ -7,24 +7,37 @@ set rtp+=~/.vim_runtime/my_plugins/Vundle.vim
 call vundle#begin('~/.vim_runtime/my_plugins')
 " those commented out plugins are overwrited
 
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'Valloric/YouCompleteMe'
+" including vundle by default
+Plugin 'VundleVim/Vundle.vim' 
+" showing vertical lines for indentation
 Plugin 'Yggdroot/indentLine'
+" enabling vimrc locally using a `_vimrc_local.vim`
 Plugin 'LucHermitte/lh-vim-lib'
 Plugin 'LucHermitte/local_vimrc'
+" automatically syncing to remote end
 Plugin 'eshion/vim-sync'
-Plugin 'vim-syntastic/syntastic'
+" quick search&jumping within page
 Plugin 'easymotion/vim-easymotion'
-Plugin 'nvie/vim-flake8'
+" moving smoothly
+Plugin 'yuttie/comfortable-motion.vim'
+" adding header automatically
 Plugin 'Glaciohound/vim-header'
+" python support
+Plugin 'nvie/vim-flake8'
 Plugin 'Vimjas/vim-python-pep8-indent'
-Plugin 'tell-k/vim-autopep8'
+" - Plugin 'tell-k/vim-autopep8'
+" a cool starting page
 Plugin 'mhinz/vim-startify'
+" automatically saving to disk
 Plugin '907th/vim-auto-save'
-Plugin 'yuttle/comfortable-motion.vim'
 
-" Plugin 'tpope/vim-rails'
-" Plugin 'skywind3000/asyncrun.vim'
+" syntactic support for automatic check
+" - Plugin 'Valloric/YouCompleteMe'
+
+" legacy
+" - Plugin 'vim-syntastic/syntastic'
+" - Plugin 'tpope/vim-rails'
+" - Plugin 'skywind3000/asyncrun.vim'
 
 call vundle#end()
 filetype plugin indent on
