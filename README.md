@@ -9,3 +9,9 @@
 ### Installing Vundle
 
     git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim_runtime/my_plugins/Vundle.vim
+
+Then use `:VundleInstall` to install all included packages (YouCompleteMe requires further compilation)
+
+### Install YouCompleteMe
+
+Follow the instructions from https://github.com/ycm-core/YouCompleteMe#macos .

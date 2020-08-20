@@ -1,4 +1,11 @@
-" Settings for Vundle
+" File              : my_configs.vim
+" Author            : Glaciohound <hanchier@gmail.com>
+" Date              : 20.08.2020
+" Last Modified Date: 20.08.2020
+" Last Modified By  : Glaciohound <hanchier@gmail.com>
+
+
+" ---------------Settings for Vundle-------------------
 
 set nocompatible              " be improved, required
 filetype off                  " required
@@ -25,14 +32,13 @@ Plugin 'Glaciohound/vim-header'
 " python support
 Plugin 'nvie/vim-flake8'
 Plugin 'Vimjas/vim-python-pep8-indent'
-" - Plugin 'tell-k/vim-autopep8'
+Plugin 'tell-k/vim-autopep8'
 " a cool starting page
 Plugin 'mhinz/vim-startify'
 " automatically saving to disk
 Plugin '907th/vim-auto-save'
-
 " syntactic support for automatic check
-" - Plugin 'Valloric/YouCompleteMe'
+Plugin 'Valloric/YouCompleteMe'
 
 " legacy
 " - Plugin 'vim-syntastic/syntastic'
@@ -44,72 +50,68 @@ filetype plugin indent on
 syntax on
 
 
-" basic settings for typing and visualization
+" ---------------Basic Settings------------------------
 
 set confirm
+set number
+set nofoldenable
+set expandtab
 set gfn=Monaco:h14
+set foldmethod=indent
+set completeopt-=preview
+set formatoptions=tqcro
 if has("gui_running")
   " GUI is running or is about to start.
   " Maximize gvim window (for an alternative on Windows, see simalt below).
   set lines=999 columns=999
 endif
-set number
-set foldmethod=indent
-set nofoldenable
-set expandtab
-set completeopt-=preview
-set formatoptions=tqcro
-
-let g:NERDTreeWinSize = 30
-let g:NERDTreeShowHidden = 1
 
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
-
-" auto-saving and synchronizing
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_python_checkers=['flake8']
-
-" let g:autosave_extensions = '.backup'
-" let g:autosave_backup     = '~/.vim/backup'
-" let g:autosave_timer      = 5*1000
-" autocmd BufWritePost * :call SyncUploadFile()
 autocmd FileType python set textwidth=79
 
-let g:auto_save = 1  " enable AutoSave on Vim startup
+" ---------------     Plugin Configurations ---------------
 
+" NerdTree
+let g:NERDTreeWinSize = 30
+let g:NERDTreeShowHidden = 1
 
-" auto-header and auto-commenting
+" Syntastic (totally replaced by YouCompleteMe)
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 0
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_check_on_wq = 0
+" let g:syntastic_python_checkers=['flake8']
 
+" auto-saving and synchronizing
+let g:autosave_extensions = '.backup'
+let g:autosave_backup     = '~/.vim/backup'
+let g:autosave_timer      = 5*1000
+autocmd BufWritePost * :call SyncUploadFile()
+let g:auto_save = 0  " enable AutoSave on Vim startup
+
+" auto-header
 let g:header_auto_add_header = 0
-let g:author = 'Glaciohound'
-let g:header_field_author = 'Chi Han'
-let g:header_field_author_email = 'haanchi@gmail.com'
-let g:header_comment = [
-            \'Welcome to this little kennel of Glaciohound!'
-            \]
-let g:header_break_after = 2
+" let g:author = 'Glaciohound'
+let g:header_field_author = 'Glaciohound'
+let g:header_field_author_email = 'hanchier@gmail.com'
+let g:header_comment = []
+let g:header_lines_after = 2
+
+" auto-commenting
 " lower-case shortcuts are for putting things before cursor
 " while the upper-case are for putting things after cursor
-nnoremap 't "=strftime('%c')<CR>P
-nnoremap 'n "=g:author<CR>P
-nnoremap 'T "=strftime('%c')<CR>p
-nnoremap 'N "=g:author<CR>p
-
+" nnoremap 't "=strftime('%c')<CR>P
+" nnoremap 'n "=g:author<CR>P
+" nnoremap 'T "=strftime('%c')<CR>p
+" nnoremap 'N "=g:author<CR>p
 
 " easymotion
-
 map <Leader><Leader>/ <Plug>(easymotion-sn)
 let g:EasyMotion_do_mapping = 1
 let g:EasyMotion_smartcase = 1
 
-
-" Mapping to AutoPep8
-
+" mapping for AutoPep8
 autocmd FileType python noremap <D-P> :call Autopep8()<CR>
