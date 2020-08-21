@@ -11,6 +11,7 @@
     git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim_runtime/my_plugins/Vundle.vim
 
 Then use `:VundleInstall` to install all included packages (YouCompleteMe requires further compilation)
+If you do not want to download (the huge) YouCompleteMe repo now, simply comment it out.
 
 ### Install YouCompleteMe
 

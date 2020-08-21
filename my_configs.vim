@@ -60,6 +60,7 @@ set gfn=Monaco:h14
 set foldmethod=indent
 set completeopt-=preview
 set formatoptions=tqcro
+set background=dark
 if has("gui_running")
   " GUI is running or is about to start.
   " Maximize gvim window (for an alternative on Windows, see simalt below).
