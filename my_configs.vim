@@ -37,8 +37,8 @@ Plugin 'tell-k/vim-autopep8'
 Plugin 'mhinz/vim-startify'
 " automatically saving to disk
 Plugin '907th/vim-auto-save'
-" syntactic support for automatic check
-Plugin 'Valloric/YouCompleteMe'
+" automatic completion. you may switch it on to vundle-install
+" Plugin 'Valloric/YouCompleteMe'
 
 " legacy
 " - Plugin 'vim-syntastic/syntastic'
@@ -68,7 +68,7 @@ if has("gui_running")
 endif
 
 set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
 autocmd FileType python set textwidth=79
