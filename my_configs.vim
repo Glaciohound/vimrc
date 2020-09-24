@@ -61,6 +61,8 @@ set foldmethod=indent
 set completeopt-=preview
 set formatoptions=tqcro
 set background=dark
+set transparency=20
+colorscheme evening
 if has("gui_running")
   " GUI is running or is about to start.
   " Maximize gvim window (for an alternative on Windows, see simalt below).
