@@ -4,6 +4,11 @@
 " Last Modified Date: 20.08.2020
 " Last Modified By  : Glaciohound <hanchier@gmail.com>
 
+" ---------------Settings before Plugins Installed-----
+
+" indentLine
+let g:indentLine_fileTypeExclude = ['json', 'markdown']
+
 
 " ---------------Settings for Vundle-------------------
 
@@ -38,7 +43,7 @@ Plugin 'mhinz/vim-startify'
 " automatically saving to disk
 Plugin '907th/vim-auto-save'
 " automatic completion. you may switch it on to vundle-install
-" Plugin 'Valloric/YouCompleteMe'
+Plugin 'Valloric/YouCompleteMe'
 
 " legacy
 " - Plugin 'vim-syntastic/syntastic'
@@ -54,10 +59,10 @@ syntax on
 
 set confirm
 set number
-set nofoldenable
 set expandtab
 set gfn=Monaco:h14
 set foldmethod=indent
+set foldcolumn=0
 set completeopt-=preview
 set formatoptions=tqcro
 set background=dark
@@ -74,12 +79,21 @@ set statusline+=%#warningmsg#
 set statusline+=%*
 
 autocmd FileType python set textwidth=79
+autocmd FileType markdown set textwidth=0
+" autocmd FileType python set colorcolumn=80
+" 
+" set cursorcolumn
+" set cursorrow
 
 " ---------------     Plugin Configurations ---------------
 
 " NerdTree
 let g:NERDTreeWinSize = 30
 let g:NERDTreeShowHidden = 1
+let g:NERDTreeQuitOnOpen = 0
+
+" GitGutter
+let g:gitgutter_enabled=1
 
 " Syntastic (totally replaced by YouCompleteMe)
 " let g:syntastic_always_populate_loc_list = 1
