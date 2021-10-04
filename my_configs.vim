@@ -66,7 +66,7 @@ set foldcolumn=0
 set completeopt-=preview
 set formatoptions=tqcro
 set background=dark
-set transparency=20
+set transparency=15
 colorscheme evening
 if has("gui_running")
   " GUI is running or is about to start.

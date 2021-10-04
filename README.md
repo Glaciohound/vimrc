@@ -16,3 +16,9 @@ If you do not want to download (the huge) YouCompleteMe repo now, simply comment
 ### Install YouCompleteMe
 
 Follow the instructions from https://github.com/ycm-core/YouCompleteMe#macos .
+
+You might need to specify `CC=clang` before `python3 install.py` when on MacOS,
+and use the original python other than the one provided by Anaconda.
+
+I also find network connection to be critical in some cases,
+for example when waiting for some python configuration.
