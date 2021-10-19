@@ -13,6 +13,10 @@
 Then use `:VundleInstall` to install all included packages (YouCompleteMe requires further compilation)
 If you do not want to download (the huge) YouCompleteMe repo now, simply comment it out.
 
+
+### Flake 8 Check
+You need to install flake8 first, probably by running `conda install flake8`.
+
 ### Install YouCompleteMe
 
 Follow the instructions from https://github.com/ycm-core/YouCompleteMe#macos .
