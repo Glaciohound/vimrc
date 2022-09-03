@@ -86,7 +86,7 @@ let g:gitgutter_enabled=1
 let g:autosave_extensions = '.backup'
 let g:autosave_backup     = '~/.vim/backup'
 let g:autosave_timer      = 5*1000
-" autocmd BufWritePost * :call SyncUploadFile()
+autocmd BufWritePost * :call SyncUploadFile()
 let g:auto_save = 0  " enable AutoSave on Vim startup
 
 " easymotion
