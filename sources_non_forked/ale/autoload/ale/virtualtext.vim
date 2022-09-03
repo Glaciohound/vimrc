@@ -7,51 +7,84 @@ scriptencoding utf-8
 let g:ale_virtualtext_delay = get(g:, 'ale_virtualtext_delay', 10)
 let s:cursor_timer = -1
 let s:last_pos = [0, 0, 0]
+let s:has_virt_text = 0
+let s:emulate_virt = 0
 
 if has('nvim-0.3.2')
     let s:ns_id = nvim_create_namespace('ale')
-endif
+    let s:has_virt_text = 1
+elseif has('textprop') && has('popupwin')
+    let s:has_virt_text = 1
+    let s:emulate_virt = !has('patch-9.0.0214')
 
-if !hlexists('ALEVirtualTextError')
-    highlight link ALEVirtualTextError ALEError
-endif
-
-if !hlexists('ALEVirtualTextStyleError')
-    highlight link ALEVirtualTextStyleError ALEVirtualTextError
-endif
-
-if !hlexists('ALEVirtualTextWarning')
-    highlight link ALEVirtualTextWarning ALEWarning
-endif
-
-if !hlexists('ALEVirtualTextStyleWarning')
-    highlight link ALEVirtualTextStyleWarning ALEVirtualTextWarning
-endif
-
-if !hlexists('ALEVirtualTextInfo')
-    highlight link ALEVirtualTextInfo ALEVirtualTextWarning
+    if s:emulate_virt
+        call prop_type_add('ale', {})
+        let s:last_virt = -1
+    else
+        let s:last_virt = 1
+    endif
 endif
 
 function! ale#virtualtext#Clear() abort
-    if !has('nvim-0.3.2')
+    if !s:has_virt_text
         return
     endif
 
     let l:buffer = bufnr('')
 
-    call nvim_buf_clear_highlight(l:buffer, s:ns_id, 0, -1)
+    if has('nvim')
+        call nvim_buf_clear_highlight(l:buffer, s:ns_id, 0, -1)
+    else
+        if s:emulate_virt && s:last_virt != -1
+            call prop_remove({'type': 'ale'})
+            call popup_close(s:last_virt)
+            let s:last_virt = -1
+        elseif s:last_virt != 1
+            call prop_remove({'id': s:last_virt})
+            let s:last_virt = 1
+        endif
+    endif
 endfunction
 
 function! ale#virtualtext#ShowMessage(message, hl_group) abort
-    if !has('nvim-0.3.2')
+    if !s:has_virt_text
         return
     endif
 
     let l:line = line('.')
     let l:buffer = bufnr('')
     let l:prefix = get(g:, 'ale_virtualtext_prefix', '> ')
+    let l:msg = l:prefix.trim(substitute(a:message, '\n', ' ', 'g'))
 
-    call nvim_buf_set_virtual_text(l:buffer, s:ns_id, l:line-1, [[l:prefix.a:message, a:hl_group]], {})
+    if has('nvim')
+        call nvim_buf_set_virtual_text(l:buffer, s:ns_id, l:line-1, [[l:msg, a:hl_group]], {})
+    elseif s:emulate_virt
+        let l:left_pad = col('$')
+        call prop_add(l:line, l:left_pad, {
+        \ 'type': 'ale',
+        \})
+        let s:last_virt = popup_create(l:msg, {
+        \ 'line': -1,
+        \ 'padding': [0, 0, 0, 1],
+        \ 'mask': [[1, 1, 1, 1]],
+        \ 'textprop': 'ale',
+        \ 'highlight': a:hl_group,
+        \ 'fixed': 1,
+        \ 'wrap': 0,
+        \ 'zindex': 2
+        \})
+    else
+        let type = prop_type_get(a:hl_group)
+
+        if type == {}
+            call prop_type_add(a:hl_group, {'highlight': a:hl_group})
+        endif
+
+        let s:last_virt = prop_add(l:line, 0, {
+        \ 'type': a:hl_group,
+        \ 'text': ' ' . l:msg
+        \})
+    endif
 endfunction
 
 function! s:StopCursorTimer() abort

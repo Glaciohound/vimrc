@@ -22,6 +22,26 @@ if !hlexists('ALEInfo')
     highlight link ALEInfo ALEWarning
 endif
 
+if !hlexists('ALEVirtualTextError')
+    highlight link ALEVirtualTextError ALEError
+endif
+
+if !hlexists('ALEVirtualTextStyleError')
+    highlight link ALEVirtualTextStyleError ALEVirtualTextError
+endif
+
+if !hlexists('ALEVirtualTextWarning')
+    highlight link ALEVirtualTextWarning ALEWarning
+endif
+
+if !hlexists('ALEVirtualTextStyleWarning')
+    highlight link ALEVirtualTextStyleWarning ALEVirtualTextWarning
+endif
+
+if !hlexists('ALEVirtualTextInfo')
+    highlight link ALEVirtualTextInfo ALEVirtualTextWarning
+endif
+
 " The maximum number of items for the second argument of matchaddpos()
 let s:MAX_POS_VALUES = 8
 let s:MAX_COL_SIZE = 1073741824 " pow(2, 30)
@@ -209,6 +229,12 @@ function! ale#highlight#SetHighlights(buffer, loclist) abort
 
     " Set the list in the buffer variable.
     call setbufvar(str2nr(a:buffer), 'ale_highlight_items', l:new_list)
+
+    let l:exclude_list = ale#Var(a:buffer, 'exclude_highlights')
+
+    if !empty(l:exclude_list)
+        call filter(l:new_list, 'empty(ale#util#GetMatches(v:val.text, l:exclude_list))')
+    endif
 
     " Update highlights for the current buffer, which may or may not
     " be the buffer we just set highlights for.

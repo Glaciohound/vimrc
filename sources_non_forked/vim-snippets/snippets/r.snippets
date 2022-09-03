@@ -25,11 +25,19 @@ snippet ei
 
 # loops
 snippet wh
-	while(${1}) {
-		${2}
+	while(${1:true}) {
+		${0}
+	}
+snippet wht
+	while(true) {
+		${0}
 	}
 snippet for
 	for (${1:item} in ${2:list}) {
+		${3}
+	}
+snippet foreach
+	foreach (${1:item} = ${2:list}) {
 		${3}
 	}
 

@@ -5,12 +5,16 @@ BufExplorer Plugin for Vim
 
 With bufexplorer, you can quickly and easily switch between buffers by using the one of the default public interfaces:
 
-  '\<Leader\>be' (normal open)  or
-  '\<Leader\>bt' (toggle open / close)  or
-  '\<Leader\>bs' (force horizontal split open)  or
-  '\<Leader\>bv' (force vertical split open)
+`\<Leader\>be` normal open
 
-Once the bufexplorer window is open you can use the normal movement keys (hjkl) to move around and then use <Enter> or <Left-Mouse-Click> to select the buffer you would like to open. If you would like to have the selected buffer opened in a new tab, simply press either <Shift-Enter> or 't'. Please note that when opening a buffer in a tab, that if the buffer is already in another tab, bufexplorer can switch to that tab automatically for you if you would like. More about that in the supplied VIM help.
+`\<Leader\>bt` toggle open / close
+
+`\<Leader\>bs` force horizontal split open
+
+`\<Leader\>bv` force vertical split open
+
+
+Once the bufexplorer window is open you can use the normal movement keys (hjkl) to move around and then use `<Enter>` or `<Left-Mouse-Click>` to select the buffer you would like to open. If you would like to have the selected buffer opened in a new tab, simply press either `<Shift-Enter>` or `t`. Please note that when opening a buffer in a tab, that if the buffer is already in another tab, bufexplorer can switch to that tab automatically for you if you would like. More about that in the supplied VIM help.
 
 Bufexplorer also offers various options including:
 - Display the list of buffers in various sort orders including:
@@ -65,7 +69,7 @@ This plugin can also be found at http://www.vim.org/scripts/script.php?script_id
         git clone https://github.com/jlanzarotta/bufexplorer.git ~/.vim/bundle/bufexplorer.vim
 
 ## License
-Copyright (c) 2001-2020, Jeff Lanzarotta
+Copyright (c) 2001-2022, Jeff Lanzarotta
 
 All rights reserved.
 
