@@ -67,10 +67,13 @@ set statusline+=%*
 
 autocmd FileType python set textwidth=79
 autocmd FileType markdown set textwidth=0
+autocmd FileType text set textwidth=0
 " autocmd FileType python set colorcolumn=80
 " 
 " set cursorcolumn
 " set cursorrow
+
+nnoremap <silent> <leader><space> :nohl<CR>
 
 " ---------------     Plugin Configurations ---------------
 
@@ -102,3 +105,7 @@ noremap <Leader>t :noautocmd vimgrep /TODO/j **/*.py<CR>:cw<CR>
 
 " snipMate version
 let g:snipMate = { 'snippet_version' : 1 }
+
+" Copilot
+let g:copilot_filetypes = {'markdown': v:true}
+autocmd BufEnter *.tex set conceallevel=0
